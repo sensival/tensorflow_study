@@ -15,17 +15,19 @@ sess = tf.Session()
 
 sess.run(tf.global_variables_initializer())
 
+# 저장할 리스트
 W_val = []
 cost_val =[]
 
 
 for i in range(-30, 50):
-    feed_W = i * 0.1
+    feed_W = i * 0.1 # -3~5까지의 W일때 cost가 어떻게 변하는지
     curr_cost, curr_W = sess.run([cost, W], feed_dict={W: feed_W})
     W_val.append(curr_W)
     cost_val.append(curr_cost)
     
 
-plt.plot(W_val, cost_val)
+plt.plot(W_val, cost_val, label='Cost fuction')
+plt.legend()
 plt.show()
 
